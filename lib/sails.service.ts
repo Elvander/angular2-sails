@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from "@angular/core";
-import {Subject, Observable} from "rxjs";
+import {Subject, ReplaySubject ,Observable} from "rxjs";
 
 declare let io: any;
 
@@ -122,7 +122,7 @@ export class SailsService {
     public connect(url, opts?): Observable<ISailsConnection> {
 
         var self = this;
-        let subject = new Subject<ISailsConnection>();
+        let subject = new ReplaySubject<ISailsConnection>();
 
 
         if (this._io && this._io.sails) {
